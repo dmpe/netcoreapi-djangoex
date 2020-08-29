@@ -13,7 +13,7 @@ namespace testcore.Controllers
     [Route("[controller]")]
     public class FirmRecommendationController : ControllerBase
     {
-        private DbContext context;
+        private DbContext context = new da3dqj9mkmfi1gContext();
         private readonly ILogger<FirmRecommendationController> _logger;
 
         // The Web API will only accept tokens 1) for users, and 2) having the access_as_user scope for this API
