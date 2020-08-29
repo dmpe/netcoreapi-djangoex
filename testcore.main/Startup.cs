@@ -10,6 +10,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using testcore.DBModel;
+using Microsoft.EntityFrameworkCore;
+
 namespace testcore
 {
     public class Startup
@@ -26,6 +29,7 @@ namespace testcore
         {
 
             services.AddControllers();
+            services.AddDbContext<da3dqj9mkmfi1gContext>(options => options.UseNpgsql(Configuration.GetConnectionString("da3dqj9mkmfi1gContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +50,7 @@ namespace testcore
             {
                 endpoints.MapControllers();
             });
+            
         }
     }
 }
