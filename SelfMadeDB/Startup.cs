@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using NSwag;
 
 namespace SelfMadeDB
 {
@@ -28,7 +30,29 @@ namespace SelfMadeDB
         {
 
             services.AddControllers();
-            services.AddSwaggerDocument();
+            // services.AddAuthentication()
+            //     .AddCookie(options => {
+            //         options.LoginPath = "/Account/Unauthorized/";
+            //         options.AccessDeniedPath = "/Account/Forbidden/";
+            //     })
+            //     .AddJwtBearer(options => {
+                    
+            //         // options.Audience = "https://netdjangoex.herokuapp.com/";
+            //         options.Authority = "https://netdjangoex.herokuapp.com";
+            //     });
+
+            services.AddOpenApiDocument(options => {
+                options.Description = "Testing Description Web API";
+                options.DocumentName = "v1";
+                options.Title = "My title for WebAPI";
+                options.Version = "v1";
+                options.AddSecurity("JWT", Enumerable.Empty<string>(), new OpenApiSecurityScheme({
+                    Type = OpenApiSecuritySchemeType.ApiKey,
+                    Name = "Authorization",
+                    In = OpenApiSecurityApiKeyLocation.Header,
+                    Description = "Type into the textbox: Bearer {your JWT token}."
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,7 +66,7 @@ namespace SelfMadeDB
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

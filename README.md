@@ -17,3 +17,5 @@ dotnet ef dbcontext scaffold "Host=ex;Database=x;Username=x;Password=x;Sslmode=R
 ```
 
 ## Deploy SelfMadeDB project
+
+Same as above

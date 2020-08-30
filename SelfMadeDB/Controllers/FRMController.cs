@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using 
+using SelfMadeDB.DBModel;
 
 namespace SelfMadeDB.Controllers
 {
@@ -33,9 +33,9 @@ namespace SelfMadeDB.Controllers
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new FirmRecommendations
             {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
+                StartingDate = DateTime.Now.AddDays(index),
+                Positioning = rng.Next(-20, 55).ToString(),
+                Description = Summaries[rng.Next(Summaries.Length)]
             })
             .ToArray();
         }
