@@ -1,10 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>cf5f49c8-2651-4ab8-aedb-92d7ff26384f</UserSecretsId>
   </PropertyGroup>
 
+  <Target Name="PrePublishTarget" AfterTargets="Publish">
+    <Exec Command="dotnet ef database update" />
+  </Target>
+
   <ItemGroup>
+    <PackageReference Include="EFCore.NamingConventions" Version="5.0.0-preview5" />
     <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.0-preview.8.20414.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.0-preview.8.20407.4" />

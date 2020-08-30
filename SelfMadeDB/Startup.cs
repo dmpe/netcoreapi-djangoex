@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using NSwag;
+using SelfMadeDB.Controllers;
 
 namespace SelfMadeDB
 {
@@ -30,6 +31,8 @@ namespace SelfMadeDB
         {
 
             services.AddControllers();
+            services.AddDbContext<SelfMadeDBContext>(options => options.UseNpgsql(Configuration.GetConnectionString("SelfMadeDBContext")));
+            // services.AddDbContext<>();
             // services.AddAuthentication()
             //     .AddCookie(options => {
             //         options.LoginPath = "/Account/Unauthorized/";
@@ -58,10 +61,10 @@ namespace SelfMadeDB
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            // if (env.IsDevelopment())
+            // {
+            app.UseDeveloperExceptionPage();
+            // }
 
             app.UseHttpsRedirection();
 
