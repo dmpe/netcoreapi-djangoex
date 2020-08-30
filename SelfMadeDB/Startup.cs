@@ -19,6 +19,8 @@ namespace SelfMadeDB
 {
     public class Startup
     {
+        private string app_secrets = null;
+            
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -29,9 +31,12 @@ namespace SelfMadeDB
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            app_secrets = Configuration["AppSettings:DBProd"];
+            
             services.AddControllers();
-            services.AddDbContext<SelfMadeDBContext>(options => options.UseNpgsql(Configuration.GetConnectionString("SelfMadeDBContext")));
+            services.AddDbContext<SelfMadeDBContext>(options => 
+                options.UseNpgsql(Configuration.GetConnectionString("SelfMadeDBContext"))
+            );
             // services.AddDbContext<>();
             // services.AddAuthentication()
             //     .AddCookie(options => {
@@ -61,10 +66,10 @@ namespace SelfMadeDB
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            // if (env.IsDevelopment())
-            // {
-            app.UseDeveloperExceptionPage();
-            // }
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
 
             app.UseHttpsRedirection();
 
