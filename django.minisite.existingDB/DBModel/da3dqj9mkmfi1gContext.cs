@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
-namespace testcore.DBModel
+namespace django.minisite.existingDB.DBModel
 {
     public partial class da3dqj9mkmfi1gContext : DbContext
     {

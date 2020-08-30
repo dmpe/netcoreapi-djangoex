@@ -4,10 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using testcore.DBModel;
+using django.minisite.existingDB.DBModel;
 using Microsoft.EntityFrameworkCore;
 
-namespace testcore.Controllers
+namespace django.minisite.existingDB.Controllers
 {
     [ApiController]
     [Route("[controller]")]

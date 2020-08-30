@@ -10,10 +10,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using testcore.DBModel;
+using django.minisite.existingDB.DBModel;
 using Microsoft.EntityFrameworkCore;
 
-namespace testcore
+namespace django.minisite.existingDB
 {
     public class Startup
     {

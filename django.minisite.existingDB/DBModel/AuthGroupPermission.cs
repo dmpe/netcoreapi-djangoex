@@ -3,15 +3,15 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace testcore.DBModel
+namespace django.minisite.existingDB.DBModel
 {
-    public partial class AuthUserGroup
+    public partial class AuthGroupPermission
     {
         public int Id { get; set; }
-        public int UserId { get; set; }
         public int GroupId { get; set; }
+        public int PermissionId { get; set; }
 
         public virtual AuthGroup Group { get; set; }
-        public virtual AuthUser User { get; set; }
+        public virtual AuthPermission Permission { get; set; }
     }
 }

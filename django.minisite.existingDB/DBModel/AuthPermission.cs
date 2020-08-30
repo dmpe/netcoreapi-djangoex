@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace testcore.DBModel
+namespace django.minisite.existingDB.DBModel
 {
     public partial class AuthPermission
     {
