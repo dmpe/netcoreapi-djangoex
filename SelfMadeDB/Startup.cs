@@ -46,7 +46,7 @@ namespace SelfMadeDB
                 options.DocumentName = "v1";
                 options.Title = "My title for WebAPI";
                 options.Version = "v1";
-                options.AddSecurity("JWT", Enumerable.Empty<string>(), new OpenApiSecurityScheme({
+                options.AddSecurity("JWT", Enumerable.Empty<string>(), new OpenApiSecurityScheme{
                     Type = OpenApiSecuritySchemeType.ApiKey,
                     Name = "Authorization",
                     In = OpenApiSecurityApiKeyLocation.Header,
